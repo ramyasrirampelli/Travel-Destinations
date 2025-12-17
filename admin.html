@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Portal</title>
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+      <h1>ADMIN DASHBOARD</h1>
+      <a href="user.html" class="switch-btn">
+    View Destinations
+  </a>
+    </nav>
+
+    <!-- ===== CONTENT ===== -->
+    <main class="content">
+
+      <h2 class="section-title">Admin Data Entry</h2>
+      <div class="admin">
+        <input type="text" placeholder="Enter Id" id="ids" />
+        <input type="text" placeholder="Enter Name" id="names" />
+        <input type="text" placeholder="Enter Image Link" id="imglink" />
+        <button id="savebtn">SAVE DATA</button>
+      </div>
+
+      <h2 class="section-title">Saved Records</h2>
+      <div class="save"></div>
+
+    </main>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>

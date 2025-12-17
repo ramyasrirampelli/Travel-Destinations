@@ -1,0 +1,247 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== TYPOGRAPHY ===== */
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #0f766e 0%, #0b3c49 45%, #020617 100%);
+  padding-top: 92px;
+  color: #e5f6f7;
+  overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+body::before {
+  content: "EXPLORE DESTINATIONS";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  background: linear-gradient(
+    to right,
+    rgba(94, 234, 212, 0.25),
+    rgba(56, 189, 248, 0.25)
+  );
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  color: #f8fafc;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+
+  z-index: 1000;
+  animation: slideDown 0.9s ease;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  max-width: 1150px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 36px;
+
+  position: relative;
+  padding-top: 56px;
+}
+
+/* ===== SECTION TITLE ===== */
+.container::before {
+  content: "Popular Destinations";
+  position: absolute;
+  top: 0;
+  left: 12px;
+
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+
+  color: #ccfbf1;
+}
+
+/* underline glow */
+.container::after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 12px;
+  width: 90px;
+  height: 5px;
+
+  background: linear-gradient(90deg, #5eead4, #38bdf8);
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
+}
+
+/* ===== USER CARD ===== */
+.container > div {
+  min-height: 330px;
+  padding: 28px;
+  border-radius: 26px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0.12)
+  );
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  transform-style: preserve-3d;
+  transition: 
+    transform 0.5s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.5s ease;
+  animation: cardEnter 0.9s ease both;
+}
+
+/* ===== CARD DEPTH HOVER ===== */
+.container > div:hover {
+  transform: translateY(-16px) rotateX(6deg) scale(1.03);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* ===== ID ===== */
+.container h4 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+  color: #f0fdfa;
+}
+
+/* ===== NAME ===== */
+.container p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  color: #bae6fd;
+}
+
+/* ===== IMAGE ===== */
+.container img {
+  width: 100%;
+  max-width: 280px;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 20px;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+
+  transition: transform 0.45s ease;
+}
+
+/* Image hover pop */
+.container > div:hover img {
+  transform: scale(1.12) translateZ(20px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes cardEnter {
+  from {
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container {
+    gap: 26px;
+  }
+
+  .container img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  body::before {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .container::before {
+    font-size: 22px;
+  }
+
+  .container > div {
+    min-height: 290px;
+  }
+}
+
+/* ===== BACK TO ADMIN BUTTON ===== */
+/* ===== BACK TO ADMIN BUTTON (RIGHT SIDE) ===== */
+.back-admin {
+  position: fixed;
+  top: 18px;
+  right: 28px;   /* 👈 moved to right */
+  z-index: 1100; /* 👈 higher than body::before (1000) */
+
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+
+  color: #0f172a;
+  background: linear-gradient(
+    135deg,
+    rgba(94, 234, 212, 0.95),
+    rgba(56, 189, 248, 0.95)
+  );
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: all 0.35s ease;
+}
+
+.back-admin:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+}
+
+

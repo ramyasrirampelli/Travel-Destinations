@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "name": "Paris",
+      "img": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34"
+    },
+    {
+      "id": "2",
+      "name": "New York",
+      "img": "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee"
+    },
+    {
+      "id": "3",
+      "name": "Tokyo",
+      "img": "https://images.unsplash.com/photo-1549693578-d683be217e58"
+    },
+    {
+      "id": "4",
+      "name": "London",
+      "img": "https://images.unsplash.com/photo-1469474968028-56623f02e42e"
+    }
+  ]
+}
