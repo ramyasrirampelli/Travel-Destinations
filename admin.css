@@ -25,6 +25,8 @@ body {
   align-items: center;
   justify-content: center;
 
+  padding: 0 16px;
+
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -36,6 +38,7 @@ body {
   font-size: 24px;
   letter-spacing: 1px;
   color: #e6fbff;
+  white-space: nowrap;
 }
 
 .switch-btn {
@@ -82,7 +85,6 @@ body {
   background: linear-gradient(90deg, #00c6ff, #0072ff);
   border-radius: 10px;
 }
-
 
 .admin {
   position: sticky;
@@ -160,7 +162,6 @@ body {
   margin-bottom: 22px;
 }
 
-
 .save button {
   padding: 10px 18px;
   border-radius: 14px;
@@ -192,11 +193,29 @@ body {
 }
 
 @media (max-width: 600px) {
+  .navbar {
+    height: auto;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .navbar h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .switch-btn {
+    position: static;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
   #savebtn {
     grid-column: span 1;
   }
 
   .admin {
-    top: 80px;
+    top: 100px;
   }
 }
