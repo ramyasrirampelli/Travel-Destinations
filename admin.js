@@ -1,12 +1,15 @@
+const API_URL = "https://crud-backend-jhep.onrender.com/data";
+
 async function showAllData() {
-  let res = await fetch(`http://localhost:3000/data`);
+  let res = await fetch(API_URL);
   try {
     if (!res.ok) {
       throw new Error("Something wrong in displaying details");
     }
     let data1 = await res.json();
+    data1.sort((a, b) => a.id - b.id);
     data1.forEach((obj) => {
-      getData(`${obj.id}`);
+      getData(obj);
     });
   } catch (error) {
     console.log(error.message);
@@ -15,36 +18,29 @@ async function showAllData() {
 
 showAllData();
 
-async function getData(id) {
-  let res = await fetch(`http://localhost:3000/data/${id}`);
-  try {
-    if (!res.ok) {
-      throw new Error("Something wrong in displaying details");
-    }
-    let data1 = await res.json();
-    let item = document.createElement("div");
-    item.innerHTML = `
+function getData(data1) {
+  let save = document.getElementsByClassName("save")[0];
+  let item = document.createElement("div");
+  item.innerHTML = `
     <h5>Id : ${data1.id}</h5>
     <p>Name : ${data1.name}</p>
     `;
-    let deletebtn = document.createElement("button");
-    deletebtn.innerHTML = "DELETE";
-    deletebtn.addEventListener("click", () => {
-      deleteData(`${data1.id}`);
+  let deletebtn = document.createElement("button");
+  deletebtn.innerHTML = "DELETE";
+  deletebtn.addEventListener("click", () => {
+    deleteData(`${data1.id}`);
+    setTimeout(() => {
       item.remove();
-    });
-    item.appendChild(deletebtn);
-    let editbtn = document.createElement("button");
-    editbtn.innerHTML = "EDIT";
-    editbtn.addEventListener("click", () => {
-      editData(`${data1.id}`);
-    });
-    item.appendChild(editbtn);
-    let save = document.getElementsByClassName("save")[0];
-    save.appendChild(item);
-  } catch (error) {
-    console.log(error.message);
-  }
+    }, 1000);
+  });
+  item.appendChild(deletebtn);
+  let editbtn = document.createElement("button");
+  editbtn.innerHTML = "EDIT";
+  editbtn.addEventListener("click", () => {
+    editData(`${data1.id}`);
+  });
+  item.appendChild(editbtn);
+  save.appendChild(item);
 }
 
 let savebtn = document.getElementById("savebtn");
@@ -55,19 +51,19 @@ let imglink = document.getElementById("imglink");
 savebtn.addEventListener("click", async () => {
   if (editId !== null) {
     updateData(editId);
-    editId=null;
-    savebtn.innerHTML="SAVE DATA"
-    ids.readOnly=false;
+    editId = null;
+    savebtn.innerHTML = "SAVE DATA";
+    ids.readOnly = false;
   } else {
-    let res = await fetch("http://localhost:3000/data", {
+    let res = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: `${ids.value}`,
-        name: `${names.value}`,
-        img: `${imglink.value}`,
+        id: Number(ids.value),
+        name: names.value,
+        img: imglink.value,
       }),
     });
     try {
@@ -75,9 +71,11 @@ savebtn.addEventListener("click", async () => {
         throw new Error("Something wrong in saving data");
       }
       alert("Data saved successfully");
+      ids.value = "";
+      names.value = "";
+      imglink.value = "";
       let data = await res.json();
-
-      getData(`${data.id}`);
+      getData(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -85,7 +83,7 @@ savebtn.addEventListener("click", async () => {
 });
 
 async function deleteData(id) {
-  let res = await fetch(`http://localhost:3000/data/${id}`, {
+  let res = await fetch(`${API_URL}/${id}`, {
     method: "DELETE",
   });
   try {
@@ -98,15 +96,11 @@ async function deleteData(id) {
   }
 }
 
-// let savebtn = document.getElementById("savebtn");
-// let ids = document.getElementById("ids");
-// let names = document.getElementById("names");
-// let imglink = document.getElementById("imglink");
 let editId = null;
 async function editData(id) {
   savebtn.innerHTML = "UPDATE DATA";
   let updatebtn = document.getElementById("updatebtn");
-  let response = await fetch(`http://localhost:3000/data/${id}`);
+  let response = await fetch(`${API_URL}/${id}`);
   try {
     if (!response.ok) {
       throw new Error("Something wrong in getting data");
@@ -123,7 +117,7 @@ async function editData(id) {
 }
 
 async function updateData(id) {
-  let res = await fetch(`http://localhost:3000/data/${id}`, {
+  let res = await fetch(`${API_URL}/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -142,8 +136,8 @@ async function updateData(id) {
     save.innerHTML = "";
     showAllData();
     ids.value = "";
-  names.value = "";
-  imglink.value = "";
+    names.value = "";
+    imglink.value = "";
   } catch (error) {
     console.log(error.message);
   }

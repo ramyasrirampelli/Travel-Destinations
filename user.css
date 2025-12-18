@@ -1,11 +1,9 @@
-/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== TYPOGRAPHY ===== */
 body {
   font-family: "Poppins", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,7 +14,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== NAVBAR ===== */
 body::before {
   content: "EXPLORE DESTINATIONS";
   position: fixed;
@@ -49,7 +46,6 @@ body::before {
   animation: slideDown 0.9s ease;
 }
 
-/* ===== MAIN CONTAINER ===== */
 .container {
   max-width: 1150px;
   margin: auto;
@@ -62,7 +58,6 @@ body::before {
   padding-top: 56px;
 }
 
-/* ===== SECTION TITLE ===== */
 .container::before {
   content: "Popular Destinations";
   position: absolute;
@@ -76,7 +71,6 @@ body::before {
   color: #ccfbf1;
 }
 
-/* underline glow */
 .container::after {
   content: "";
   position: absolute;
@@ -90,7 +84,6 @@ body::before {
   box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
 }
 
-/* ===== USER CARD ===== */
 .container > div {
   min-height: 330px;
   padding: 28px;
@@ -123,7 +116,6 @@ body::before {
   animation: cardEnter 0.9s ease both;
 }
 
-/* ===== CARD DEPTH HOVER ===== */
 .container > div:hover {
   transform: translateY(-16px) rotateX(6deg) scale(1.03);
   box-shadow:
@@ -131,7 +123,6 @@ body::before {
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
-/* ===== ID ===== */
 .container h4 {
   font-size: 18px;
   font-weight: 700;
@@ -140,7 +131,6 @@ body::before {
   color: #f0fdfa;
 }
 
-/* ===== NAME ===== */
 .container p {
   font-size: 16px;
   font-weight: 500;
@@ -148,7 +138,6 @@ body::before {
   color: #bae6fd;
 }
 
-/* ===== IMAGE ===== */
 .container img {
   width: 100%;
   max-width: 280px;
@@ -163,12 +152,10 @@ body::before {
   transition: transform 0.45s ease;
 }
 
-/* Image hover pop */
 .container > div:hover img {
   transform: scale(1.12) translateZ(20px);
 }
 
-/* ===== ANIMATIONS ===== */
 @keyframes slideDown {
   from { transform: translateY(-100%); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
@@ -185,7 +172,6 @@ body::before {
   }
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .container {
     gap: 26px;
@@ -211,13 +197,12 @@ body::before {
   }
 }
 
-/* ===== BACK TO ADMIN BUTTON ===== */
-/* ===== BACK TO ADMIN BUTTON (RIGHT SIDE) ===== */
+
 .back-admin {
   position: fixed;
   top: 18px;
-  right: 28px;   /* 👈 moved to right */
-  z-index: 1100; /* 👈 higher than body::before (1000) */
+  right: 28px;   
+  z-index: 1100; 
 
   padding: 10px 22px;
   font-size: 14px;

@@ -1,5 +1,7 @@
+const API_URL = "https://crud-backend-jhep.onrender.com/data";
+
 async function showAllData() {
-  let res = await fetch(`http://localhost:3000/data`);
+let res = await fetch(API_URL);
   try {
     if (!res.ok) {
       throw new Error("Something wrong in displaying details");
@@ -11,8 +13,8 @@ async function showAllData() {
   }
 }
  function getData(data){
-  let container=document.getElementsByClassName("container")[0]
     data.forEach(obj => {
+        let container=document.getElementsByClassName("container")[0]
       let item = document.createElement("div");
     item.innerHTML = `
     <h4>Id : ${obj.id}</h4>
