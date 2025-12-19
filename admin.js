@@ -61,9 +61,9 @@ savebtn.addEventListener("click", async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: Number(ids.value),
-        name: names.value,
-        img: imglink.value,
+        id: `${ids.value}`,
+        name: `${names.value}`,
+        img: `${imglink.value}`,
       }),
     });
     try {
